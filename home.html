@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111113" />
+    <title>maimai rating tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="input.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="authView" class="auth-view">
+        <div class="auth-copy">
+          <div class="brand-mark"><a href="https://bongol.carrd.co" target="_blank" rel="noopener noreferrer">🍃</a></div>
+          <p class="eyebrow">bongo's larp coding adhd project</p>
+          <h1>ALL.net<br /><span>is down!!</span></h1>
+          <p class="muted auth-intro">but your statistics dont need to be!</p>
+        </div>
+        <form id="authForm" class="auth-card">
+          <div class="card-heading">
+            <p class="eyebrow">welcom 2 maimai!!</p>
+            <h2>tap your "aime"</h2>
+            <p class="muted">key in an email and password, i swear its safe</p>
+          </div>
+          <label>
+            Email
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input id="password" name="password" type="password" placeholder="At least 6 characters" autocomplete="current-password" minlength="6" required />
+          </label>
+          <button class="button button-primary button-wide" type="submit">continue <span>→</span></button>
+          <button id="forgotPasswordButton" class="link-button" type="button">forgot password?</button>
+          <p id="authMessage" class="form-message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="dashboardView" class="dashboard-view is-hidden">
+        <header class="topbar">
+          <a class="wordmark" href="#" aria-label="maimai tracker home"><span>🍃</span> bongo MMLT</a>
+          <div class="topbar-actions">
+            <button id="themeToggle" class="icon-button" type="button" aria-label="Toggle theme" title="Toggle theme">☼</button>
+            <button id="logoutButton" class="text-button" type="button">Log out</button>
+          </div>
+        </header>
+
+        <div class="dashboard-content">
+          <section class="profile-panel">
+            <div class="profile-main">
+              <button id="avatarButton" class="avatar" type="button" aria-label="Edit profile picture"></button>
+              <div>
+                <p class="eyebrow">player profile</p>
+                <h1 id="playerName"></h1>
+              </div>
+              <button id="editProfileButton" class="edit-button" type="button">✎ <span>Edit profile</span></button>
+            </div>
+            <div class="profile-stats">
+              <div>
+                <span class="stat-label">total rating</span>
+                <strong id="totalRating">0</strong>
+              </div>
+              <div>
+                <span class="stat-label">score count</span>
+                <strong id="scoreCount">0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-heading">
+            <div>
+              <p class="eyebrow">score list</p>
+              <h2>recent scores</h2>
+            </div>
+            <button id="addScoreButton" class="button button-primary" type="button">＋ add score</button>
+          </section>
+
+          <section id="scoresList" class="scores-list" aria-live="polite"></section>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="scoreDialog" class="modal">
+      <form id="scoreForm" method="dialog">
+        <div class="modal-heading">
+          <div>
+            <p class="eyebrow">new entry</p>
+            <h2>add a score</h2>
+          </div>
+          <button class="close-button" type="button" data-close-dialog aria-label="Close">×</button>
+        </div>
+        <div class="form-grid">
+          <label class="full-width">song name<input id="songName" type="text" placeholder="e.g. Antinomie" required /></label>
+          <label>difficulty
+            <select id="difficulty" required><option>Basic</option><option>Advanced</option><option>Expert</option><option selected>Master</option><option>Re:Master</option></select>
+          </label>
+          <label>level
+            <select id="level" required></select>
+          </label>
+          <label>rank
+            <select id="rank" required><option>SSS+</option><option>SSS</option><option>SS+</option><option selected>SS</option><option>S+</option><option>S</option><option>AAA</option><option>AA</option><option>A</option></select>
+          </label>
+          <label>accuracy (%)<input id="accuracy" type="number" min="0" max="101" step="0.001" placeholder="99.500" required /></label>
+          <label>rating score<input id="ratingScore" type="number" min="0" step="0.01" placeholder="306" required /></label>
+        </div>
+        <button class="button button-primary button-wide" type="submit">save score! <span>→</span></button>
+      </form>
+    </dialog>
+
+    <dialog id="forgotPasswordDialog" class="modal">
+      <form id="forgotPasswordForm" method="dialog">
+        <div class="modal-heading">
+          <div><p class="eyebrow">account recovery</p><h2>reset password</h2></div>
+          <button class="close-button" type="button" data-close-dialog aria-label="Close">×</button>
+        </div>
+        <p class="muted modal-copy">enter your account email and we'll send you a reset link.</p>
+        <label>Email<input id="resetEmail" type="email" placeholder="you@example.com" autocomplete="email" required /></label>
+        <button class="button button-primary button-wide" type="submit">send reset link! <span>→</span></button>
+        <p id="resetMessage" class="form-message" role="status"></p>
+      </form>
+    </dialog>
+
+    <dialog id="profileDialog" class="modal">
+      <form id="profileForm" method="dialog">
+        <div class="modal-heading"><div><p class="eyebrow">profile settings</p><h2>edit profile</h2></div><button class="close-button" type="button" data-close-dialog aria-label="Close">×</button></div>
+        <label>player name<input id="profileName" type="text" required /></label>
+        <label>profile image
+          <input id="avatarFile" type="file" accept="image/jpeg,image/png,image/webp" />
+          <small class="field-help">JPG, PNG, or WebP up to 2 MB.</small>
+        </label>
+        <p id="uploadMessage" class="form-message" role="status"></p>
+        <button class="button button-primary button-wide" type="submit">save profile</button>
+        <button id="deleteAccountButton" class="danger-button" type="button">delete account</button>
+      </form>
+    </dialog>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

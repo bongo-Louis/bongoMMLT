@@ -1,0 +1,135 @@
+:root {
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: #19191d;
+  --surface-raised: #222228;
+  --border: transparent;
+  --text: #f3f1ec;
+  --muted: #9c9aa4;
+  --accent: #aa7be7;
+  --accent-dark: #401a5f;
+  --danger: #ff7777;
+  --shadow: 0 1.5rem 4.5rem rgba(0, 0, 0, 0.18);
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; background: var(--bg); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Fredoka", sans-serif;
+}
+button, input, select { font: inherit; }
+button:focus, input:focus, select:focus { outline: none; }
+button { cursor: pointer; }
+.app-shell { width: min(100%, 1160px); min-height: 100vh; margin: auto; padding: 0 1.75rem 4rem; }
+.is-hidden { display: none !important; }
+.muted { color: var(--muted); }
+.eyebrow, .stat-label { margin-bottom: 0.1rem; color: var(--accent); font: 500 0.7rem/1.2 "JetBrains Mono", monospace; letter-spacing: 0.14em; }
+.auth-view { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 10%; min-height: 100vh; }s
+.avatar { display: grid; place-items: center; background: var(--accent); color: #14150d; font-weight: 700; }
+.brand-mark { width: 3.25rem; height: 3.25rem; margin-bottom: 2.25rem; border-radius: 0.875rem; font-size: 2.5rem; }
+h1, h2, p { margin-top: 0; }
+h1, h2, .wordmark { font-family: "Cal Sans", "Fredoka", sans-serif; }
+h1 { margin-bottom: 0.875rem; font-size: clamp(3rem, 7vw, 6rem); line-height: 0.94; letter-spacing: 0em; }
+h1 span { color: var(--accent); }
+h2 { margin: 0.5rem 0 0; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: 0em; }
+p { font-size: 1rem; line-height: 1.5; }
+.auth-intro { max-width: 310px; font-size: 1rem; line-height: 1.55; }
+.auth-card, .modal { background: var(--surface); box-shadow: var(--shadow); }
+.auth-card { padding: clamp(1.5rem, 5vw, 2.75rem); border-radius: 1.375rem; }
+.card-heading { margin-bottom: 1.75rem; }
+.card-heading .muted { margin: 0.75rem 0 0; font-size: 0.86rem; line-height: 1.5; }
+a { color:#000000; text-decoration: none; }
+label { display: grid; gap: 0.5rem; margin-bottom: 1.125rem; color: var(--muted); font-size: 0.78rem; }
+input, select { width: 100%; padding: 0.8125rem 0.875rem; border: 0; border-radius: 0.5rem; outline: 0; background: var(--surface-raised); color: var(--text); }
+input[type="file"] { padding: 0.625rem; font-size: 0.78rem; }
+input:focus, select:focus { box-shadow: 0 0 0 3px rgba(170, 123, 231, 0.14); }
+.field-help { color: var(--muted); font-size: 0.7rem; }
+.button { border: 0; border-radius: 0.5rem; padding: 0.8125rem 1.125rem; font-weight: 600; transition: transform 0.2s, background 0.2s; }
+.button:hover { transform: translateY(-2px); }
+.button-primary { background: var(--accent); color: #17180f; }
+.button-primary:hover { background: #b991eb; }
+.button-wide { width: 100%; margin-top: 0.5rem; }
+.button span { margin-left: 8px; font-size: 1.2rem; }
+.link-button { display: block; margin: 1rem auto 0; border: 0; background: none; color: var(--muted); font-size: 0.78rem; }
+.link-button:hover { color: var(--accent); }
+.form-message { min-height: 1.125rem; margin: 0.9375rem 0 0; color: var(--danger); font-size: 0.78rem; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 1.75rem 0 4rem; }
+.wordmark { color: var(--text); text-decoration: none; font-weight: 600; letter-spacing: -0.03em; }
+.wordmark span { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: 7px; border-radius: 7px; color: #15160e; font-size: 0.85rem; }
+.topbar-actions { display: flex; align-items: center; gap: 1.25rem; }
+.icon-button, .text-button, .edit-button, .close-button { border: 0; background: none; color: var(--muted); }
+.icon-button { font-size: 1.25rem; }
+.text-button:hover, .edit-button:hover, .icon-button:hover { color: var(--accent); }
+.dashboard-content { max-width: 920px; margin: auto; }
+.profile-panel { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.25rem; padding: 2.125rem; border-radius: 1.125rem; background: var(--surface); }
+.profile-main { display: flex; align-items: center; gap: 1.125rem; }
+.avatar { flex: 0 0 auto; width: 4.5rem; height: 4.5rem; border: 0; border-radius: 50%; font-size: 0rem; }
+.avatar-image { width: 4rem; height: 4rem; border-radius: inherit; object-fit: cover; }
+.profile-main h1 { margin: 5px 0 4px; font-size: clamp(2.2rem, 5vw, 3.8rem); }
+.profile-main .muted { margin: 0; font: 0.8rem "JetBrains Mono", monospace; }
+.edit-button { margin-left: 0.5rem; font-size: 0.8rem; }
+.profile-stats { display: flex; gap: 2.375rem; }
+.profile-stats strong { display: block; margin-top: 0.5rem; font-size: 1.7rem; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; margin: 4.5rem 0 1.5rem; }
+.section-heading h2 { margin-top: 0.5rem; }
+.scores-list { display: grid; gap: 0.5625rem; }
+.empty-state { padding: 3.25rem 1.25rem; border-radius: 0.75rem; text-align: center; background: var(--surface); }
+.empty-state p { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
+.score-row { display: grid; grid-template-columns: 1fr 7.5rem 6.5625rem 5.75rem; align-items: center; gap: 1rem; padding: 1.0625rem 1.25rem; border-radius: 0.625rem; background: var(--surface); }
+.score-row:hover { background: var(--surface-raised); }
+.song-name { margin: 0 0 5px; font-weight: 600; }
+.song-meta { margin: 0; color: var(--muted); font: 0.72rem "JetBrains Mono", monospace; }
+.score-value { text-align: right; }
+.score-value strong { display: block; color: var(--accent); font-size: 1.15rem; }
+.score-value small { color: var(--muted); font-size: 0.7rem; }
+.rank { color: var(--text); text-align: center; font: 500 0.8rem "JetBrains Mono", monospace; }
+
+.modal { width: min(92vw, 34.375rem); padding: 1.875rem; border: 0; border-radius: 1rem; color: var(--text); }
+.modal::backdrop { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); }
+.modal-heading { display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.75rem; }
+.modal-heading h2 { margin-top: 0.5rem; }
+.modal-copy { font-size: 0.86rem; line-height: 1.5; }
+.close-button { font-size: 1.8rem; line-height: 1; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 0.875rem; }
+.full-width { grid-column: 1 / -1; }
+.danger-button { width: 100%; margin-top: 1.5rem; padding: 0.625rem; border: 0; border-radius: 0.5rem; background: #3a2024; color: var(--danger); font-size: 0.8rem; }
+
+body.light { --bg: #f2f1eb; --surface: #fff; --surface-raised: #f7f7f3; --border: #d8d7ce; --text: #20211d; --muted: #73746b; --shadow: 0 24px 70px rgba(40, 40, 25, 0.12); background: var(--bg); }
+body.light .profile-panel { background: var(--surface); }
+
+/* Target the element you want to hide the scrollbar on */
+.hide-scrollbar {
+  /* For Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE and Edge */
+  -ms-overflow-style: none;
+
+  /* For Firefox */
+  scrollbar-width: none; 
+}
+
+
+@media (max-width: 700px) {
+  .app-shell { padding: 0 1rem 2.5rem; }
+  .auth-view { display: block; padding-top: 4rem; }
+  .auth-copy { margin-bottom: 2.75rem; }
+  .auth-copy h1 { font-size: 4rem; }
+  .topbar { padding: 1.25rem 0 2.625rem; }
+  .profile-panel { display: block; padding: 1.5rem 1.25rem; }
+  .profile-stats { margin-top: 1.75rem; gap: 1.875rem; }
+  .profile-stats strong { font-size: 1.4rem; }
+  .section-heading { align-items: start; gap: 1.125rem; margin-top: 3rem; }
+  .section-heading .button { padding: 0.6875rem 0.75rem; white-space: nowrap; }
+  .score-row { grid-template-columns: 1fr auto; gap: 0.4375rem 0.75rem; padding: 0.9375rem; }
+  .score-row .score-value { grid-column: 2; grid-row: 1 / span 2; }
+  .rank { text-align: left; }
+  .edit-button span { display: none; }
+}
