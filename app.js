@@ -67,7 +67,9 @@ function render() {
     `<img class="avatar-image" src="${escapeHtml(profile.avatarUrl)}" alt="" />` :
     "";
   $("#scoreCount").textContent = state.scores.length;
-  $("#totalRating").textContent = state.scores.reduce((total, score) => total + Number(score.ratingScore), 0).toFixed(0);
+  $("#totalRating").textContent = String(Math.round(
+    state.scores.reduce((total, score) => total + Number(score.ratingScore), 0)
+  ));
   const sortedScores = [...state.scores].sort((a, b) => Number(b.ratingScore) - Number(a.ratingScore));
   $("#scoresList").innerHTML = sortedScores.length ?
     sortedScores.map(scoreTemplate).join("") :
