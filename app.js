@@ -67,7 +67,7 @@ function render() {
     `<img class="avatar-image" src="${escapeHtml(profile.avatarUrl)}" alt="" />` :
     "";
   $("#scoreCount").textContent = state.scores.length;
-  $("#totalRating").textContent = state.scores.reduce((total, score) => total + Number(score.ratingScore), 0).toFixed(2);
+  $("#totalRating").textContent = state.scores.reduce((total, score) => total + Number(score.ratingScore), 0).toFixed(0);
   const sortedScores = [...state.scores].sort((a, b) => Number(b.ratingScore) - Number(a.ratingScore));
   $("#scoresList").innerHTML = sortedScores.length ?
     sortedScores.map(scoreTemplate).join("") :
@@ -75,7 +75,7 @@ function render() {
 }
 
 function scoreTemplate(score) {
-  return `<article class="score-row"><div><p class="song-name">${escapeHtml(score.songName)}</p><p class="song-meta">${score.difficulty} · level ${score.level} · ${score.accuracy}%</p></div><div class="rank">${escapeHtml(score.rank)}</div><div class="score-value"><strong>${Number(score.ratingScore).toFixed(2)}</strong><small>rating score</small></div><button class="delete-score-button" type="button" data-score-id="${escapeHtml(score.id)}" aria-label="Delete ${escapeHtml(score.songName)} score" title="Delete score">×</button></article>`;
+  return `<article class="score-row"><div><p class="song-name">${escapeHtml(score.songName)}</p><p class="song-meta">${score.difficulty} · level ${score.level} · ${score.accuracy}%</p></div><div class="rank">${escapeHtml(score.rank)}</div><div class="score-value"><strong>${Number(score.ratingScore).toFixed(0)}</strong><small>rating score</small></div><button class="delete-score-button" type="button" data-score-id="${escapeHtml(score.id)}" aria-label="Delete ${escapeHtml(score.songName)} score" title="Delete score">×</button></article>`;
 }
 
 function escapeHtml(value) {
