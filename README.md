@@ -17,6 +17,8 @@ hence in light of this, although i now know a good chunk of how the html, css an
 i cant morally call this project my own, so feel free to do whatever
 (that and i honestly still need to understand tailwind, i just ended up editing my input.css file anyway)
 
+hence why there the word "larp" in the name
+
 ## how does this website work
 
 key in your credentials > firebase checks for an account first > if you are a user, retrieve your json data > puts it in state memory, sort rating score, map each score into scoretemplate(), join the html together put it inside score list
