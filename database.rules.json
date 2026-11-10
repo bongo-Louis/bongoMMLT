@@ -1,0 +1,23 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "profile": {
+          ".validate": "newData.hasChildren(['name', 'avatarUrl']) && newData.child('name').isString() && newData.child('avatarUrl').isString()"
+        },
+        "scores": {
+          "$scoreId": {
+            ".validate": "newData.hasChildren(['songName', 'difficulty', 'level', 'rank', 'accuracy', 'ratingScore']) && newData.child('songName').isString() && newData.child('difficulty').isString() && newData.child('level').isString() && newData.child('rank').isString() && newData.child('accuracy').isString() && newData.child('ratingScore').isString()"
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}

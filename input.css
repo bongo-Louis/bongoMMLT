@@ -80,7 +80,7 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(170, 123, 231, 0.14); }
 .scores-list { display: grid; gap: 0.5625rem; }
 .empty-state { padding: 3.25rem 1.25rem; border-radius: 0.75rem; text-align: center; background: var(--surface); }
 .empty-state p { margin: 8px 0 0; color: var(--muted); font-size: 0.9rem; }
-.score-row { display: grid; grid-template-columns: 1fr 7.5rem 6.5625rem 5.75rem; align-items: center; gap: 1rem; padding: 1.0625rem 1.25rem; border-radius: 0.625rem; background: var(--surface); }
+.score-row { display: grid; grid-template-columns: 1fr 7.5rem 6.5625rem 5.75rem 2rem; align-items: center; gap: 1rem; padding: 1.0625rem 1.25rem; border-radius: 0.625rem; background: var(--surface); }
 .score-row:hover { background: var(--surface-raised); }
 .song-name { margin: 0 0 5px; font-weight: 600; }
 .song-meta { margin: 0; color: var(--muted); font: 0.72rem "JetBrains Mono", monospace; }
@@ -88,6 +88,8 @@ input:focus, select:focus { box-shadow: 0 0 0 3px rgba(170, 123, 231, 0.14); }
 .score-value strong { display: block; color: var(--accent); font-size: 1.15rem; }
 .score-value small { color: var(--muted); font-size: 0.7rem; }
 .rank { color: var(--text); text-align: center; font: 500 0.8rem "JetBrains Mono", monospace; }
+.delete-score-button { border: 0; background: none; color: var(--muted); font-size: 1.35rem; line-height: 1; }
+.delete-score-button:hover { color: var(--danger); }
 
 .modal { width: min(92vw, 34.375rem); padding: 1.875rem; border: 0; border-radius: 1rem; color: var(--text); }
 .modal::backdrop { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); }
@@ -128,8 +130,9 @@ body.light .profile-panel { background: var(--surface); }
   .profile-stats strong { font-size: 1.4rem; }
   .section-heading { align-items: start; gap: 1.125rem; margin-top: 3rem; }
   .section-heading .button { padding: 0.6875rem 0.75rem; white-space: nowrap; }
-  .score-row { grid-template-columns: 1fr auto; gap: 0.4375rem 0.75rem; padding: 0.9375rem; }
+  .score-row { grid-template-columns: 1fr auto auto; gap: 0.4375rem 0.75rem; padding: 0.9375rem; }
   .score-row .score-value { grid-column: 2; grid-row: 1 / span 2; }
   .rank { text-align: left; }
+  .delete-score-button { grid-column: 3; grid-row: 1 / span 2; }
   .edit-button span { display: none; }
 }

@@ -67,7 +67,7 @@ function render() {
 }
 
 function scoreTemplate(score) {
-  return `<article class="score-row"><div><p class="song-name">${escapeHtml(score.songName)}</p><p class="song-meta">${score.difficulty} · level ${score.level} · ${score.accuracy}%</p></div><div class="rank">${escapeHtml(score.rank)}</div><div class="score-value"><strong>${Number(score.ratingScore).toFixed(2)}</strong><small>rating score</small></div></article>`;
+  return `<article class="score-row"><div><p class="song-name">${escapeHtml(score.songName)}</p><p class="song-meta">${score.difficulty} · level ${score.level} · ${score.accuracy}%</p></div><div class="rank">${escapeHtml(score.rank)}</div><div class="score-value"><strong>${Number(score.ratingScore).toFixed(2)}</strong><small>rating score</small></div><button class="delete-score-button" type="button" data-score-id="${escapeHtml(score.id)}" aria-label="Delete ${escapeHtml(score.songName)} score" title="Delete score">×</button></article>`;
 }
 
 function escapeHtml(value) {
@@ -157,6 +157,17 @@ $("#scoreForm").addEventListener("submit", async (event) => {
     await enforceScoreLimit();
     scoreDialog.close();
   } catch (error) { alert(`Could not save score: ${error.message}`); }
+});
+$("#scoresList").addEventListener("click", async (event) => {
+  const deleteButton = event.target.closest("[data-score-id]");
+  if (!deleteButton) return;
+  const score = state.scores.find(({ id }) => id === deleteButton.dataset.scoreId);
+  if (!score || !confirm(`Delete your ${score.songName} score?`)) return;
+  try {
+    await remove(userRef(`scores/${score.id}`));
+  } catch (error) {
+    alert(`Could not delete score: ${error.message}`);
+  }
 });
 
 $("#editProfileButton").addEventListener("click", () => {
