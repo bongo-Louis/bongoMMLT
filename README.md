@@ -27,6 +27,8 @@ alot of firebase updating is done for score uploads, and name changes
 
 uploading a picture, js checks if its any of the supported file types and then makes sure its under 2mb, the file is then fetched to cloudinary, it resizes it to 320x320, gives it a public id yayyyy then the result is a img url that we also update to the db and render
 
+when it comes to deleting the score its as simple as checking #scorelist on click, finds the score id of that specific score entry and deletes it
+
 that should be all lowk
 
 clicking on the leaf emoji lets u like, go to my carrd.co i guess...
