@@ -129,7 +129,7 @@ async function enforceScoreLimit() {
 
 for (let level = 1; level <= 15; level += 1) {
   $("#level").insertAdjacentHTML("beforeend", `<option>${level}</option>`);
-  if (level >= 7) $("#level").insertAdjacentHTML("beforeend", `<option>${level}+</option>`);
+  if (level >= 7 && level < 15) $("#level").insertAdjacentHTML("beforeend", `<option>${level}+</option>`);
 }
 
 $("#authForm").addEventListener("submit", async (event) => {
