@@ -7,6 +7,9 @@ bongo's maimai larp tracker (MMLT for short), is a simple web application i deve
 its hosted on github, i dont expect this project to blow up? so both my cloudinary and firebase instances are set up with the free plan, feel free to try it out tho
 https://bongo-louis.github.io/bongoMMLT/
 
+## things i might do
+- people shouldn't have to key in their rank if they key in their acc
+
 ## why CC0 license?
 the main aim of this project was to have a better understanding of firebase auth, db as well as (because i needed it) cloudinary's sdk and api respectively. i wanted to try and understand tailwind too? 
 
